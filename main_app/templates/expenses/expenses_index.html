@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<h1>Your Expenses</h1>
+
+{% for expenses in expenses %}
+  <div>
+    <div>
+      <span>{{ expenses.group }}</span>
+      <span>{{ expenses.title }}</span>
+      <p>Expense Type: {{ expenses.type }}</p>
+      <p>Expense Description: {{ expenses.description}}</p>
+      <p>Total Amount: {{ expenses.amount}}</p>
+    </div>
+  </div>
+{% endfor %}
+
+{% endblock %}
