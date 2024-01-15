@@ -18,7 +18,7 @@ class ExpenseType(Enum):
     TRANSPORTATION = 'Transportation'
     ENTERTAINMENT = 'Entertainment'
 
-class Expenses(models.Model):
+class Expense(models.Model):
     group = models.ForeignKey(Group, on_delete=models.CASCADE)
     title = models.CharField(max_length=100)
     type = models.CharField(
