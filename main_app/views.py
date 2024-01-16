@@ -1,4 +1,4 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 from django.urls import reverse_lazy
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from .models import Group, Expense
@@ -31,7 +31,13 @@ class GroupCreateView(CreateView):
 class GroupUpdate(UpdateView):
     model = Group
     fields = ['name', 'description', 'members']
+    template_name = 'groups/create_group.html'
+    success_url = reverse_lazy('groups_index')
 
-class GroupDelete(UpdateView):
+    def get_object(self, queryset=None):
+       
+        return get_object_or_404(Group, id=self.kwargs['group_id'])
+
+class GroupDelete(DeleteView):
     model = Group
     success_url = reverse_lazy('groups_index')

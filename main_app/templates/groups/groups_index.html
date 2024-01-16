@@ -4,9 +4,13 @@
 
     {% for group in groups %}
         <div>
-            <h2><a href="{% url 'group_details' group.id %}">{{ group.name }}</a></h2>
-            <p>Description: {{ group.description }}</p>
-            <p>Group Members: {{ group.members.all|join:", " }}</p>
+            <div>
+                <span><a href="{% url 'group_details' group_id=group.id %}">{{ group.name }}</a></span>
+                <p>Description: {{ group.description }}</p>
+                <p>Group Members: {{ group.members }}</p>
+                <a href="{% url 'group_update' group_id=group.id %}">Update</a>
+                <a href="{% url 'group_delete' group_id=group.id %}">Delete</a>
+            </div>
         </div>
     {% endfor %}
 {% endblock %}
