@@ -1,5 +1,7 @@
 from django.shortcuts import render, redirect
-from .models import Group, Expense
+from django.urls import reverse_lazy
+from django.views.generic.edit import CreateView, UpdateView, DeleteView
+from .models import Group
 from .forms import GroupForm
 
 
@@ -15,13 +17,8 @@ def expenses_index(request):
     expenses = Expense.objects.all()
     return render(request, 'expenses/expenses_index.html', {'expenses': expenses})
 
-def create_group(request):
-    if request.method == 'POST':
-        form = GroupForm(request.POST)
-        if form.is_valid():
-            new_group = form.save()
-            return redirect('groups_index')  
-    else:
-        form = GroupForm()
-
-    return render(request, 'create_group.html', {'form': form})
+class GroupCreateView(CreateView):
+    model = Group
+    form_class = GroupForm
+    template_name = 'groups/create_group.html'
+    success_url = reverse_lazy('groups_index')
