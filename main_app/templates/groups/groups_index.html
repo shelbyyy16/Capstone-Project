@@ -1,16 +1,12 @@
 {% extends 'base.html' %}
 {% block content %}
+    <h1>Your Groups</h1>
 
-<h1>Your Groups</h1>
-
-{% for group in groups %}
-  <div>
-    <div>
-      <span>{{ group.name }}</span>
-      <p>Description: {{ group.description }}</p>
-      <p>Group Members: {{ group.members}}</p>
-    </div>
-  </div>
-{% endfor %}
-
+    {% for group in groups %}
+        <div>
+            <h2><a href="{% url 'group_details' group.id %}">{{ group.name }}</a></h2>
+            <p>Description: {{ group.description }}</p>
+            <p>Group Members: {{ group.members.all|join:", " }}</p>
+        </div>
+    {% endfor %}
 {% endblock %}

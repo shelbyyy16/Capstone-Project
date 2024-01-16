@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+{% block content %}
+    <h2>{{ group.name }} Details</h2>
+    <p>Description: {{ group.description }}</p>
+    
+    <h3>Expenses</h3>
+    {% if expenses %}
+        <ul>
+            {% for expense in expenses %}
+                <li>{{ expense.title }} - {{ expense.amount }}</li>
+            {% endfor %}
+        </ul>
+    {% else %}
+        <p>No expenses found for this group.</p>
+    {% endif %}
+{% endblock %}
