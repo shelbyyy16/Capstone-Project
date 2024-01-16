@@ -21,9 +21,9 @@
             <li><a href="/">&nbsp;&nbsp;SPL/T</a></li>
           </ul>
           <ul>
-            <li><a href="/groups">Your Groups</a></li>
-            <li><a href="/">Create a Group</a></li>
-            <li><a href="/expenses">Your Expenses</a></li>
+            <li><a href="{% url 'groups_index' %}">Your Groups</a></li>
+            <li><a href="{% url 'create_group' %}">Create Group</a></li>
+            <li><a href="{% url 'expenses_index' %}">Your Expenses</a></li>
             <li><a href="/">Add an Expense</a></li>
           </ul>
         </div>
