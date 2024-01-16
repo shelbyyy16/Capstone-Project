@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<h1>Your Expenses</h1>
+
+<div>
+  <div>
+    <span>{{ expense.title }}</span>
+    <span>{{ expense.group }}</span>
+    <p>Expense Type: {{ expense.type }}</p>
+    <p>Expense Description: {{ expense.description}}</p>
+    <p>Total Amount: {{ expense.amount}}</p>
+    <a href="{% url 'expense_update' expense_id=expense.id %}">Update</a>
+    <a href="{% url 'expense_delete' expense_id=expense.id %}">Delete</a>
+  </div>
+</div>
+
+{% endblock %}

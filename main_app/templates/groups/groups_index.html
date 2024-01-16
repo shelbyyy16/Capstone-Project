@@ -7,7 +7,11 @@
             <div>
                 <span><a href="{% url 'group_details' group_id=group.id %}">{{ group.name }}</a></span>
                 <p>Description: {{ group.description }}</p>
-                <p>Group Members: {{ group.members }}</p>
+                <p>Group Members: 
+                    {% for member in group.members.all %}
+                        {{ member.username }}{% if not forloop.last %}, {% endif %}
+                    {% endfor %}
+                </p>
                 <a href="{% url 'group_update' group_id=group.id %}">Update</a>
                 <a href="{% url 'group_delete' group_id=group.id %}">Delete</a>
             </div>

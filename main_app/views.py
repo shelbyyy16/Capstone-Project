@@ -2,7 +2,7 @@ from django.shortcuts import render, redirect, get_object_or_404
 from django.urls import reverse_lazy
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from .models import Group, Expense
-from .forms import GroupForm
+from .forms import GroupForm, ExpenseForm
 
 
 
@@ -21,6 +21,10 @@ def group_details(request, group_id):
 def expenses_index(request):
     expenses = Expense.objects.all()
     return render(request, 'expenses/expenses_index.html', {'expenses': expenses})
+
+def expense_details(request, expense_id):
+    expense = Expense.objects.get(id=expense_id)
+    return render(request, 'expenses/expense_details.html', {'expense': expense})
 
 class GroupCreateView(CreateView):
     model = Group
@@ -46,3 +50,26 @@ class GroupDelete(DeleteView):
     def get_object(self):
        
         return get_object_or_404(Group, id=self.kwargs['group_id'])
+    
+class ExpenseCreateView(CreateView):
+    model = Expense
+    form_class = ExpenseForm
+    template_name = 'expenses/create_expense.html'
+    success_url = reverse_lazy('expenses_index')
+
+class ExpenseUpdate(UpdateView):
+    model = Expense
+    form_class = ExpenseForm  
+    template_name = 'expenses/create_expense.html'
+    success_url = reverse_lazy('expenses_index')
+
+    def get_object(self):
+        return get_object_or_404(Expense, id=self.kwargs['expense_id'])
+
+class ExpenseDelete(DeleteView):
+    model = Expense
+    template_name = 'expenses/confirm_delete_expense.html'
+    success_url = reverse_lazy('expenses_index')
+
+    def get_object(self):
+        return get_object_or_404(Expense, id=self.kwargs['expense_id'])

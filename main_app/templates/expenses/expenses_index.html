@@ -3,14 +3,18 @@
 
 <h1>Your Expenses</h1>
 
-{% for expenses in expenses %}
+{% for expense in expenses %}
   <div>
     <div>
-      <span>{{ expenses.group }}</span>
-      <span>{{ expenses.title }}</span>
-      <p>Expense Type: {{ expenses.type }}</p>
-      <p>Expense Description: {{ expenses.description}}</p>
-      <p>Total Amount: {{ expenses.amount}}</p>
+      {% if expense.id %}
+        <span><a href="{% url 'expense_details' expense_id=expense.id %}">{{ expense.title}}</a></span>
+      {% else %}
+        <span>{{ expense.title }}</span> 
+      {% endif %}
+      <span>{{ expense.group }}</span>
+      <p>Expense Type: {{ expense.type }}</p>
+      <p>Expense Description: {{ expense.description}}</p>
+      <p>Total Amount: {{ expense.amount}}</p>
     </div>
   </div>
 {% endfor %}

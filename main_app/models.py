@@ -33,6 +33,7 @@ class Expense(models.Model):
         choices=[(tag.name, tag.value) for tag in ExpenseType],
         default=ExpenseType.LODGING.value
     )
+    description = models.TextField(max_length=250, default='N/A')
     amount = models.PositiveIntegerField()
 
     def __str__(self):
