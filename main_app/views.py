@@ -61,6 +61,7 @@ class ExpenseCreateView(CreateView):
     template_name = 'expenses/create_expense.html'
     success_url = reverse_lazy('expenses_index')
 
+
 class ExpenseUpdate(UpdateView):
     model = Expense
     form_class = ExpenseForm  
