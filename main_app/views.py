@@ -32,6 +32,10 @@ class GroupCreateView(CreateView):
     template_name = 'groups/create_group.html'
     success_url = reverse_lazy('groups_index')
 
+    def form_valid(self, form):
+        form.instance.user = self.request.user
+        return super().form_valid(form)
+
 class GroupUpdate(UpdateView):
     model = Group
     fields = ['name', 'description', 'members']
