@@ -77,7 +77,7 @@ WSGI_APPLICATION = 'splitexpense.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'splitexpense',
+        'NAME': 'split',
     }
 }
 
@@ -120,5 +120,8 @@ STATIC_URL = 'static/'
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.0/ref/settings/#default-auto-field
+
+LOGIN_REDIRECT_URL = '/groups/'
+LOGOUT_REDIRECT_URL = '/'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'

@@ -1,19 +1,12 @@
 from django.db import models
 from enum import Enum  
 from django.urls import reverse
-
-class User(models.Model):
-    username = models.CharField(max_length=30, unique=True)
-    password = models.CharField(max_length=30, unique=True)  
-    email = models.EmailField(max_length=254)
-
-    def __str__(self):
-        return self.username
+from django.contrib.auth.models import User
 
 class Group(models.Model):
     name = models.CharField(max_length=100)
     description = models.TextField(max_length=250)
-    members = models.ManyToManyField(User)
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
 
     def __str__(self):
         return self.name

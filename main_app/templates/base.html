@@ -20,11 +20,19 @@
           <ul>
             <li><a href="/">&nbsp;&nbsp;SPL/T</a></li>
           </ul>
+          {% if user.is_authenticated %}
           <ul>
             <li><a href="{% url 'groups_index' %}">Your Groups</a></li>
             <li><a href="{% url 'create_group' %}">Create Group</a></li>
             <li><a href="{% url 'expenses_index' %}">Your Expenses</a></li>
             <li><a href="{% url 'create_expense' %}">Add an Expense</a></li>
+            <li><form action="{% url 'logout' %}" method="POST">
+              {% csrf_token%}
+              <button type="submit" class="btn">Log Out</button>
+            </form></li>
+            {% else %}
+            <li><a href="{% url 'login' %}">Log In</a></li>
+          {% endif %}
           </ul>
         </div>
       </nav>
