@@ -34,10 +34,15 @@ class GroupUpdate(UpdateView):
     template_name = 'groups/create_group.html'
     success_url = reverse_lazy('groups_index')
 
-    def get_object(self, queryset=None):
+    def get_object(self):
        
         return get_object_or_404(Group, id=self.kwargs['group_id'])
 
 class GroupDelete(DeleteView):
     model = Group
     success_url = reverse_lazy('groups_index')
+    template_name = 'groups/confirm_delete_group.html'
+
+    def get_object(self):
+       
+        return get_object_or_404(Group, id=self.kwargs['group_id'])
