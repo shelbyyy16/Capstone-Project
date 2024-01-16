@@ -13,4 +13,5 @@ urlpatterns = [
     path('expenses/<int:expense_id>/', views.expense_details, name='expense_details'),
     path('expenses/<int:expense_id>/update/', views.ExpenseUpdate.as_view(), name='expense_update'),
     path('expenses/<int:expense_id>/delete/', views.ExpenseDelete.as_view(), name='expense_delete'),
+    path('accounts/signup/', views.signup, name='signup'),
 ]
