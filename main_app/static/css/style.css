@@ -2,13 +2,20 @@ body {
     display: flex;
     min-height: 100vh;
     flex-direction: column;
-    background-color: #4d474c;
+    background-color: #3b4855;
 }
 
 .custom-card-color {
-    background-color: #8AA69C;
+    background-color: #b9d8cd;
   }
 
 .custom-nav-color {
-    background-color: #8AA69C;
+    background-color: #b9d8cd;
+    
 }
+
+a {
+    text-decoration: none;
+    color: white;
+
+  }

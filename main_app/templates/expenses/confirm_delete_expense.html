@@ -1,10 +1,14 @@
 {% extends 'base.html' %}
 {% block content %}
+<div class="card w-75 mb-3 custom-card-color">
+    <div class="card-body">
     <h2>Confirm Delete</h2>
     <p>Are you sure you want to delete the expense"{{ expense.title }}"?</p>
     <form method="post" action="">
         {% csrf_token %}
-        <button type="submit">Yes, delete</button>
+        <button type="submit" style="background-color: #61778d;">Yes, delete</button>
         <a href="{% url 'expenses_index' %}">Cancel</a>
     </form>
+</div>
+</div>
 {% endblock %}

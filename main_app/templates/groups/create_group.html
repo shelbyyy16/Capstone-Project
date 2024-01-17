@@ -1,14 +1,14 @@
 {% extends 'base.html' %}
 {% block content %}
-<div class="card w-75 mb-3">
-    <div class="card-body"></div>
+<div class="card w-75 mb-3 custom-card-color">
+    <div class="card-body">
     <h2 class="card-title text-center">Create a New Group</h2>
     
     <form method="post" enctype="multipart/form-data">
         {% csrf_token %}
         {{ form.as_p }}
     
-        <button type="submit" class="btn btn-primary">Create Group</button>
+        <button type="submit" class="btn btn-primary" style="background-color: #61778d;" >Create Group</button>
     </form>
     </div>
     

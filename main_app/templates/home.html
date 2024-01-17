@@ -1,16 +1,20 @@
 {% extends 'base.html' %} 
 {% block content %}
 
-<main>
-<h1>Welcome to SPL/T</h1>
-<div>
+<div class="row row-cols-1 row-cols-md-3 g-4"> </div>
+<div class="col">
+    <div class="card text-center custom-card-color">
+        <div class="card-body">
+            <h1 class="card-title">Welcome to SPL/T</h1>
     {% if user.is_authenticated %}
-    <button><a href="{% url 'groups_index' %}">View Your Groups</a></button>
-    <button><a href="{% url 'expenses_index' %}">View Your Expenses</a></button>
+    <button class="btn btn-primary" style="background-color: #61778d;"><a href="{% url 'groups_index' %}">View Your Groups</a></button>
+    <button class="btn btn-primary" style="background-color: #61778d;"><a href="{% url 'expenses_index' %}">View Your Expenses</a></button>
     {% else %}
     <button><a href="{% url 'login' %}">Log In</a></button>
     <button><a href="{% url 'signup' %}">Sign Up</a></button>
     {% endif %}
 </div>
-</main>
+</div>
+</div>
+</div>
 {% endblock %}

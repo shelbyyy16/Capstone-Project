@@ -12,9 +12,9 @@
             <h6 class="card-subtitle mb-2 text-body-secondary">
               {{ data.group.description }}
             </h6>
-            <p>Total Owed: ${{ data.total_owed }}</p>
-            <a href="{% url 'group_update' group_id=data.group.id %}" class="btn btn-primary">Update</a>
-            <a href="{% url 'group_delete' group_id=data.group.id %}" class="btn btn-primary">Delete</a>
+            <p class="{% if data.total_owed != 0 %}text-danger{% endif %}">Total Owed: ${{ data.total_owed }}</p>
+            <a href="{% url 'group_update' group_id=data.group.id %}" class="btn btn-primary" style="background-color: #61778d;">Update</a>
+            <a href="{% url 'group_delete' group_id=data.group.id %}" class="btn btn-primary" style="background-color: #61778d;">Delete</a>
           </div>
         </div>
       </div>
