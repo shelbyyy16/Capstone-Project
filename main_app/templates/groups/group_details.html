@@ -18,7 +18,9 @@
     {% if expenses %}
       <ul>
         {% for expense in expenses %}
-          <li class="card-text">{{ expense.title }} - {{ expense.amount }}</li>
+        <h6 class="card-subtitle mb-2 text-body-secondary">{{ expense.title }}</h6>
+          <p class="card-text">Total Amount {{ expense.amount }}</p>
+          <p class="card-text">You Owe: {{ expense.divided_amount }}</p>
         {% endfor %}
       </ul>
     {% else %}
