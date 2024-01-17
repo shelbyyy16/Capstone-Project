@@ -6,10 +6,22 @@
     <p class="red-text">{{ error_message }}</p>
 
     <form method="POST" action="{% url 'signup' %}">
-      {% csrf_token %} {{ form.as_p }}
+      {% csrf_token %}
+      {{ form.as_p }}
+      {% if form_errors %}
+        <div class="alert alert-danger">
+          <strong>Error(s):</strong>
+          <ul>
+            {% for field, errors in form_errors.items %}
+              {% for error in errors %}
+                <li>{{ field }}: {{ error }}</li>
+              {% endfor %}
+            {% endfor %}
+          </ul>
+        </div>
+      {% endif %}
       <button type="submit" class="btn btn-primary">Sign Up</button>
     </form>
   </div>
 </div>
-
 {% endblock %}

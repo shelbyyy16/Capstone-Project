@@ -53,22 +53,25 @@ def expense_details(request, expense_id):
     return render(request, 'expenses/expense_details.html', {'expense': expense})
 
 def signup(request):
-  error_message = ''
+    error_message = ''
 
-  if request.method == 'POST':
-    form = UserCreationForm(request.POST)
-    
-    if form.is_valid():
-      user = form.save()
-      login(request, user)
-      return redirect('index')
-    
+    if request.method == 'POST':
+        form = UserCreationForm(request.POST)
+
+        if form.is_valid():
+            user = form.save()
+            login(request, user)
+            return redirect('home')
+        else:
+            # Retrieve and display form errors
+            error_message = 'Invalid sign up - try again'
+            form_errors = form.errors
     else:
-      error_message = 'Invalid sign up - try again'
+        form = UserCreationForm()
+        form_errors = None
 
-  form = UserCreationForm()
-  context = {'form': form, 'error_message': error_message}
-  return render(request, 'registration/signup.html', context)
+    context = {'form': form, 'error_message': error_message, 'form_errors': form_errors}
+    return render(request, 'registration/signup.html', context)
 
 
 class GroupCreateView(LoginRequiredMixin, CreateView):
