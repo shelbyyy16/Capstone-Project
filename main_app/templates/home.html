@@ -1,5 +1,16 @@
 {% extends 'base.html' %} 
 {% block content %}
 
-<h1>Home for the Homies!</h1>
+<main>
+<h1>Welcome to SPL/T</h1>
+<div>
+    {% if user.is_authenticated %}
+    <button><a href="{% url 'groups_index' %}">View Your Groups</a></button>
+    <button><a href="{% url 'expenses_index' %}">View Your Expenses</a></button>
+    {% else %}
+    <button><a href="{% url 'login' %}">Log In</a></button>
+    <button><a href="{% url 'signup' %}">Sign Up</a></button>
+    {% endif %}
+</div>
+</main>
 {% endblock %}

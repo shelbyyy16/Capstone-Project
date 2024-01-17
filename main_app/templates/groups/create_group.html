@@ -3,7 +3,10 @@
     <h2>Create a New Group</h2>
     <form method="post" enctype="multipart/form-data">
         {% csrf_token %}
+        <div class="mb-3">
         {{ form.as_p }}
-        <button type="submit">Create Group</button>
+    
+        <button type="submit" class="btn btn-primary">Create Group</button>
+    </div>
     </form>
 {% endblock %}

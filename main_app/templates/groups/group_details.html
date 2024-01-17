@@ -1,16 +1,17 @@
-{% extends 'base.html' %}
-{% block content %}
-    <h2>{{ group.name }} Details</h2>
-    <p>Description: {{ group.description }}</p>
-    
-    <h3>Expenses</h3>
+{% extends 'base.html' %} {% block content %}
+<h2></h2>
+<div class="card" style="width: 18rem">
+  <div class="card-body">
+    <h5 class="card-title">{{ group.name }} Details</h5>
+    <h6 class="card-subtitle mb-2 text-body-secondary">Expenses</h6>
     {% if expenses %}
-        <ul>
-            {% for expense in expenses %}
-                <li>{{ expense.title }} - {{ expense.amount }}</li>
-            {% endfor %}
-        </ul>
+    <ul>
+      {% for expense in expenses %}
+      <p class="card-text">{{ expense.title }} - {{ expense.amount }}</p>
+      {% endfor %}
+    </ul>
     {% else %}
-        <p>No expenses found for this group.</p>
-    {% endif %}
-{% endblock %}
+    <p>No expenses found for this group.</p>
+  </div>
+</div>
+{% endif %} {% endblock %}

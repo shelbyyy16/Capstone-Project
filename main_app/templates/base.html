@@ -15,13 +15,17 @@
   </head>
   <body>
     <header>
-      <nav>
-        <div>
+      <nav class="navbar navbar-expand-lg bg-body-tertiary">
+        <div class="container-fluid">
           <ul>
-            <li><a href="/">&nbsp;&nbsp;SPL/T</a></li>
+            <div><a href="/">&nbsp;&nbsp;SPL/T</a></div>
           </ul>
           {% if user.is_authenticated %}
-          <ul>
+          <div class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              Dropdown
+            </a>
+          <ul class="dropdown-menu">
             <li><a href="{% url 'groups_index' %}">Your Groups</a></li>
             <li><a href="{% url 'create_group' %}">Create Group</a></li>
             <li><a href="{% url 'expenses_index' %}">Your Expenses</a></li>
@@ -29,7 +33,9 @@
             <li><form action="{% url 'logout' %}" method="POST">
               {% csrf_token%}
               <button type="submit" class="btn">Log Out</button>
-            </form></li>
+            </form>
+            </li>
+          </ul>
             {% else %}
             <li><a href="{% url 'login' %}">Log In</a></li>
             <li><a href="{% url 'signup' %}">Sign Up</a></li>

@@ -1,16 +1,20 @@
-{% extends 'base.html' %}
-{% block content %}
-    <h1>Your Groups</h1>
-
+{% extends 'base.html' %} {% block content %}
+<h1>Your Groups</h1>
+<div class="card" style="width: 18rem">
+  <div class="card-body">
     {% for group in groups %}
-        <div>
-            <div>
-                <span><a href="{% url 'group_details' group_id=group.id %}">{{ group.name }}</a></span>
-                <p>Description: {{ group.description }}</p>
-
-                <a href="{% url 'group_update' group_id=group.id %}">Update</a>
-                <a href="{% url 'group_delete' group_id=group.id %}">Delete</a>
-            </div>
-        </div>
-    {% endfor %}
-{% endblock %}
+    <h5 class="card-title">
+      <a href="{% url 'group_details' group_id=group.id %}">{{ group.name }}</a>
+    </h5>
+    <h6 class="card-subtitle mb-2 text-body-secondary">
+      {{ group.description }}
+    </h6>
+    <a href="{% url 'group_update' group_id=group.id %}" class="btn btn-primary"
+      >Update</a
+    >
+    <a href="{% url 'group_delete' group_id=group.id %}" class="btn btn-primary"
+      >Delete</a
+    >
+  </div>
+</div>
+{% endfor %} {% endblock %}

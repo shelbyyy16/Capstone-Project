@@ -1,22 +1,19 @@
-{% extends 'base.html' %}
+{% extends 'base.html' %} 
 {% block content %}
-
 <h1>Your Expenses</h1>
+<div class="card" style="width: 18rem;">
+  <div class="card-body">
+    {% for expense in expenses %}
+    <h5 class="card-title"> <a href="{% url 'expense_details' expense_id=expense.id %}">{{ expense.title }}</a></h5>
+    <h6 class="card-subtitle mb-2 text-body-secondary">{{ expense.group}}</h6>
+    <p class="card-text">Expense Type: {{ expense.type }}</p>
+    <p class="card-text">Expense Description: {{ expense.description}}</p>
+    <p class="card-text">Total Amount: {{ expense.amount}}</p>
+    <a href="{% url 'expense_update' expense_id=expense.id %}" class="btn btn-primary">Update</a>
+  <a href="{% url 'expense_delete' expense_id=expense.id %}" class="btn btn-primary">Delete</a>
 
-{% for expense in expenses %}
-  <div>
-    <div>
-      {% if expense.id %}
-        <span><a href="{% url 'expense_details' expense_id=expense.id %}">{{ expense.title}}</a></span>
-      {% else %}
-        <span>{{ expense.title }}</span> 
-      {% endif %}
-      <span>{{ expense.group }}</span>
-      <p>Expense Type: {{ expense.type }}</p>
-      <p>Expense Description: {{ expense.description}}</p>
-      <p>Total Amount: {{ expense.amount}}</p>
-    </div>
   </div>
-{% endfor %}
+</div>
 
+{% endfor %}
 {% endblock %}
