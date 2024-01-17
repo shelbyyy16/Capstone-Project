@@ -34,3 +34,11 @@ class ExpenseForm(ModelForm):
             'description': forms.Textarea(attrs={'class': 'form-control'}),
             'amount': forms.NumberInput(attrs={'class': 'form-control'}),
         }
+
+    def save(self, commit=True):
+        expense = super().save(commit=False)
+        members_count = expense.group.members.count()
+        expense.divided_amount = expense.amount / members_count if members_count > 0 else 0
+        if commit:
+            expense.save()
+        return expense
