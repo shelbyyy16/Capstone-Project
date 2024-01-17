@@ -24,10 +24,12 @@ def group_details(request, group_id):
     expenses = Expense.objects.filter(group=group)
     return render(request, 'groups/group_details.html', {'group': group, 'expenses': expenses})
 
+@login_required
 def expenses_index(request):
-    expenses = Expense.objects.all()
+    expenses = Expense.objects.filter(group__user=request.user)
     return render(request, 'expenses/expenses_index.html', {'expenses': expenses})
 
+@login_required
 def expense_details(request, expense_id):
     expense = Expense.objects.get(id=expense_id)
     return render(request, 'expenses/expense_details.html', {'expense': expense})
@@ -80,14 +82,14 @@ class GroupDelete(LoginRequiredMixin, DeleteView):
        
         return get_object_or_404(Group, id=self.kwargs['group_id'])
     
-class ExpenseCreateView(CreateView):
+class ExpenseCreateView(LoginRequiredMixin, CreateView):
     model = Expense
     form_class = ExpenseForm
     template_name = 'expenses/create_expense.html'
     success_url = reverse_lazy('expenses_index')
 
 
-class ExpenseUpdate(UpdateView):
+class ExpenseUpdate(LoginRequiredMixin, UpdateView):
     model = Expense
     form_class = ExpenseForm  
     template_name = 'expenses/create_expense.html'
@@ -96,7 +98,7 @@ class ExpenseUpdate(UpdateView):
     def get_object(self):
         return get_object_or_404(Expense, id=self.kwargs['expense_id'])
 
-class ExpenseDelete(DeleteView):
+class ExpenseDelete(LoginRequiredMixin, DeleteView):
     model = Expense
     template_name = 'expenses/confirm_delete_expense.html'
     success_url = reverse_lazy('expenses_index')

@@ -9,4 +9,4 @@ class GroupForm(ModelForm):
 class ExpenseForm(ModelForm):
     class Meta:
         model = Expense
-        fields = ['group', 'title', 'type', 'amount']
+        fields = ['group', 'title', 'type', 'description', 'amount']
