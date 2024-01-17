@@ -1,13 +1,14 @@
-{% extends 'base.html' %} {% block content %}
+{% extends 'base.html' %}
+{% block content %}
 <h2></h2>
-<div class="card" style="width: 18rem">
-  <div class="card-body">
-    <h2 class="card-title">{{ group.name }} Details</h5>
+<div class="card custom-card-color" style="width: 18rem" >
+  <div class="card-body ">
+    <h2 class="card-title">{{ group.name }} Details</h2>
     <h6 class="card-subtitle mb-2 text-body-secondary">Group Members</h6>
     {% if group.members.all %}
       <ul>
         {% for member in group.members.all %}
-      <li>{{ member.username }}</li>
+          <li>{{ member.username }}</li>
         {% endfor %}
       </ul>
     {% else %}
@@ -18,14 +19,19 @@
     {% if expenses %}
       <ul>
         {% for expense in expenses %}
-        <h6 class="card-subtitle mb-2 text-body-secondary">{{ expense.title }}</h6>
-          <p class="card-text">Total Amount {{ expense.amount }}</p>
-          <p class="card-text">You Owe: {{ expense.divided_amount }}</p>
+          <h6 class="card-subtitle mb-2 text-body-secondary">{{ expense.title }}</h6>
+          <p class="card-text">Total: ${{ expense.amount }}</p>
+          <p class="card-text">You Owe: ${{ expense.divided_amount }}</p>
         {% endfor %}
       </ul>
     {% else %}
       <p>No expenses found for this group.</p>
     {% endif %}
+
+    <h6 class="card-subtitle mb-2 text-body-secondary">Group Total: ${{ group_total }}</h6>
+
+    <h6 class="card-subtitle mb-2 text-body-secondary">Your Total: ${{ total_owed }}</h6>
+
   </div>
 </div>
 {% endblock %}

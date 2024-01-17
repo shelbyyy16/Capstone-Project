@@ -4,14 +4,14 @@
 <div class="row row-cols-1 row-cols-md-3 g-4">
     {% for expense in expenses %}
     <div class="col">
-      <div class="card text-center">
-        <div class="card-body">
-    <h5 class="card-title"> <a href="{% url 'expense_details' expense_id=expense.id %}">{{ expense.title }}</a></h5>
+      <div class="card text-center custom-card-color">
+        <div class="card-body ">
+    <h5 class="card-title"> {{ expense.title }}</h5>
     <h6 class="card-subtitle mb-2 text-body-secondary">{{ expense.group}}</h6>
     <p class="card-text">Expense Type: {{ expense.type }}</p>
     <p class="card-text">Expense Description: {{ expense.description}}</p>
-    <p class="card-text">Total Amount: {{ expense.amount}}</p>
-    <p class="card-text">You Owe: {{ expense.divided_amount }}</p>
+    <p class="card-text">Total Amount: ${{ expense.amount}}</p>
+    <p class="card-text">You Owe: ${{ expense.divided_amount }}</p>
     <a href="{% url 'expense_update' expense_id=expense.id %}" class="btn btn-primary">Update</a>
   <a href="{% url 'expense_delete' expense_id=expense.id %}" class="btn btn-primary">Delete</a>
 </div>

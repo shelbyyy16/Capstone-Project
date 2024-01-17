@@ -7,6 +7,7 @@ from django.contrib.auth import login
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.mixins import LoginRequiredMixin
+from django.db.models import Sum
 
 
 
@@ -16,13 +17,30 @@ def home(request):
 @login_required
 def groups_index(request):
     groups = Group.objects.filter(user=request.user)
-    return render(request, 'groups/groups_index.html', {'groups': groups})
+    
+    group_data = []
+    for group in groups:
+        expenses = Expense.objects.filter(group=group)
+        total_owed = expenses.aggregate(Sum('divided_amount'))['divided_amount__sum'] or 0
+        group_data.append({'group': group, 'total_owed': total_owed})
+
+    return render(request, 'groups/groups_index.html', {'group_data': group_data})
+
 
 @login_required
 def group_details(request, group_id):
     group = Group.objects.get(id=group_id)
     expenses = Expense.objects.filter(group=group)
-    return render(request, 'groups/group_details.html', {'group': group, 'expenses': expenses})
+
+    group_total = expenses.aggregate(Sum('amount'))['amount__sum'] or 0
+    total_owed = expenses.aggregate(Sum('divided_amount'))['divided_amount__sum'] or 0
+
+    return render(request, 'groups/group_details.html', {
+        'group': group,
+        'expenses': expenses,
+        'group_total': group_total,
+        'total_owed': total_owed,
+    })
 
 @login_required
 def expenses_index(request):
