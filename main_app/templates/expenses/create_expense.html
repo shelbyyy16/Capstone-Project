@@ -1,11 +1,15 @@
 {% extends 'base.html' %}
 {% block content %}
-    <h2>Add a New Expense</h2>
-    <div class="mb-3">
+<div class="card w-75 mb-3">
+    <div class="card-body">
+    <h2  class="card-title text-center">Add a New Expense</h2>
+
     <form method="post" enctype="multipart/form-data">
         {% csrf_token %}
         {{ form.as_p }}
         <button type="submit" class="btn btn-primary">Add Expense</button>
-    </div>
+
     </form>
+</div>
+</div>
 {% endblock %}
