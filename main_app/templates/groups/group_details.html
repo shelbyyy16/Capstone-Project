@@ -3,15 +3,27 @@
 <div class="card" style="width: 18rem">
   <div class="card-body">
     <h5 class="card-title">{{ group.name }} Details</h5>
+    <h6 class="card-subtitle mb-2 text-body-secondary">Group Members</h6>
+    {% if group.members.all %}
+      <ul>
+        {% for member in group.members.all %}
+          <li>{{ member.username }}</li>
+        {% endfor %}
+      </ul>
+    {% else %}
+      <p>No members found for this group.</p>
+    {% endif %}
+
     <h6 class="card-subtitle mb-2 text-body-secondary">Expenses</h6>
     {% if expenses %}
-    <ul>
-      {% for expense in expenses %}
-      <p class="card-text">{{ expense.title }} - {{ expense.amount }}</p>
-      {% endfor %}
-    </ul>
+      <ul>
+        {% for expense in expenses %}
+          <p class="card-text">{{ expense.title }} - {{ expense.amount }}</p>
+        {% endfor %}
+      </ul>
     {% else %}
-    <p>No expenses found for this group.</p>
+      <p>No expenses found for this group.</p>
+    {% endif %}
   </div>
 </div>
-{% endif %} {% endblock %}
+{% endblock %}

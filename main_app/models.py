@@ -7,6 +7,7 @@ class Group(models.Model):
     name = models.CharField(max_length=100)
     description = models.TextField(max_length=250)
     user = models.ForeignKey(User, on_delete=models.CASCADE)
+    members = models.ManyToManyField(User, related_name='group_members')
 
     def __str__(self):
         return self.name

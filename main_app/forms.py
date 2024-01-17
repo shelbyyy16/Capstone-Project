@@ -1,16 +1,26 @@
 from django import forms
 from django.forms import ModelForm
+from django.contrib.auth.models import User  
 from .models import Group, Expense
 
 class GroupForm(ModelForm):
+    members = forms.ModelMultipleChoiceField(
+        queryset=User.objects.all(),
+        widget=forms.CheckboxSelectMultiple,
+    )
+
     class Meta:
         model = Group
-        fields = ['name', 'description']
+        fields = ['name', 'description', 'members']
 
         widgets = {
             'name': forms.TextInput(attrs={'class': 'form-control'}),
             'description': forms.Textarea(attrs={'class': 'form-control'}),
         }
+
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        self.fields['members'].label = 'Group Members'
 
 class ExpenseForm(ModelForm):
     class Meta:
