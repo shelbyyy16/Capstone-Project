@@ -2,15 +2,15 @@ body {
     display: flex;
     min-height: 100vh;
     flex-direction: column;
-    background-color: #3b4855;
+    background-color: #263631;
 }
 
 .custom-card-color {
-    background-color: #b9d8cd;
+    background-color: #20c997;
   }
 
 .custom-nav-color {
-    background-color: #b9d8cd;
+    background-color: #20c997;
     
 }
 
