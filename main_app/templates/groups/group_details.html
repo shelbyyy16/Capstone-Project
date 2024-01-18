@@ -1,6 +1,6 @@
 {% extends 'base.html' %}
 {% block content %}
-  <div class="container-fluid">
+<div class="container-fluid" style="margin: 60px;">
     <div class="row">
 
       <div class="col-md-3">
@@ -16,26 +16,31 @@
         {% endif %}
       </div>
 
-
       <div class="col-md-9">
-        <div class="card mb-3 custom-card-color">
+        <div class="card w-75 m-3 custom-card-color">
           <h2 class="custom-bg card-header text-light text-center">| {{ group.name }}</h2>
           <div class="card-body bg-light">
             {% if expenses %}
               <ul>
                 {% for expense in expenses %}
                   <h6 class="card-subtitle mb-2 text-body-secondary">{{ expense.title }}</h6>
-                  <p class="card-text">Total: ${{ expense.amount }}</p>
-                  <p class="card-text">You Owe: ${{ expense.divided_amount }}</p>
+                  <div class="d-flex justify-content-between">
+                    <p class="card-text">Total: ${{ expense.amount }}</p>
+                    <p class="card-text">You Owe: ${{ expense.divided_amount }}</p>
+                  </div>
                 {% endfor %}
               </ul>
             {% else %}
               <p>No expenses found for this group.</p>
             {% endif %}
 
-            <h6 class="card-subtitle mb-2 text-body-secondary">Group Total: ${{ group_total }}</h6>
-            <h6 class="card-subtitle mb-2 text-body-secondary">Your Total: ${{ total_owed }}</h6>
-            <a href="{% url 'create_expense' %}" class="btn btn-primary" style="background-color: #61778d;"> Add Expense</a>
+            <div class="d-flex justify-content-between">
+              <h6 class="card-subtitle mb-2 text-body-secondary">Group Total: ${{ group_total }}</h6>
+              <h6 class="card-subtitle mb-2 text-body-secondary">Your Total: ${{ total_owed }}</h6>
+            </div>
+            
+            <a href="{% url 'create_expense' %}" class="btn btn-primary" style="background-color: #172627;"> Add Expense</a>
+            
           </div>
         </div>
       </div>

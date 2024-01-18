@@ -1,16 +1,17 @@
 {% extends 'base.html' %}
 {% block content %}
 
-<div class="card w-75 mb-3 custom-card-color">
-    <h2 class="card-header text-center text-light">Create a New Group</h2>
-    <div class="card-body bg-light">
-    <form method="post" enctype="multipart/form-data">
-        {% csrf_token %}
-        {{ form.as_p }}
-    
-        <button type="submit" class="btn btn-primary" style="background-color: #61778d;" >Create Group</button>
-    </form>
+<div class="d-flex justify-content-center align-items-center vh-100"> 
+    <div class="card w-75 m-3 custom-card-color">
+        <h2 class="card-header text-center text-light">Create a New Group</h2>
+        <div class="card-body bg-light">
+            <form method="post" enctype="multipart/form-data">
+                {% csrf_token %}
+                {{ form.as_p }}
+        
+                <button type="submit" class="btn btn-primary" style="background-color: #172627;">Create Group</button>
+            </form>
+        </div>
     </div>
-    
 </div>
 {% endblock %}

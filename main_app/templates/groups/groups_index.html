@@ -1,23 +1,43 @@
 {% extends 'base.html' %} 
 {% block content %}
-<h1 class="text-center text-light">Your Groups</h1>
-  <div class="row row-cols-1 row-cols-md-3 g-4"> 
-    {% for data in group_data %}
-      <div class="col">
-        <div class="card text-center custom-card-color">
-          <div class="card-body">
-            <h5 class="card-title">
-              <a href="{% url 'group_details' group_id=data.group.id %}">{{ data.group.name }}</a>
-            </h5>
-            <h6 class="card-subtitle mb-2 text-body-secondary">
-              {{ data.group.description }}
-            </h6>
-            <p class="{% if data.total_owed != 0 %}text-danger{% endif %}">Total Owed: ${{ data.total_owed }}</p>
-            <a href="{% url 'group_update' group_id=data.group.id %}" class="btn btn-primary" style="background-color: #61778d;">Update</a>
-            <a href="{% url 'group_delete' group_id=data.group.id %}" class="btn btn-primary" style="background-color: #61778d;">Delete</a>
+  <div class="container-fluid">
+    <div class="row">
+  
+      <div class="col-md-3">
+        <h1 class="text-light">| Your Groups</h1>
+      </div>
+
+      <div class="col-md-9">
+        <div class="row row-cols-1 row-cols-md-3 g-4 equal-height-cards"> 
+          {% for data in group_data %}
+            <div class="col">
+              <div class="card text-center custom-card-color d-flex flex-column h-100">
+                <div class="card-body">
+                  <h5 class="card-title">
+                    <a href="{% url 'group_details' group_id=data.group.id %}">{{ data.group.name }}</a>
+                  </h5>
+                  <h6 class="card-subtitle mb-2 text-body-secondary">
+                    {{ data.group.description }}
+                  </h6>
+                  <p class="{% if data.total_owed != 0 %}text-danger{% endif %}">Total Owed: ${{ data.total_owed }}</p>
+                  <a href="{% url 'group_update' group_id=data.group.id %}" class="btn btn-primary" style="background-color: #172627;">Update</a>
+                  <a href="{% url 'group_delete' group_id=data.group.id %}" class="btn btn-primary" style="background-color: #172627;">Delete</a>
+                </div>
+              </div>
+            </div>
+          {% endfor %}
+
+          <div class="col">
+            <div class="card text-center custom-card-color d-flex flex-column h-100">
+              <div class="card-body">
+                <h5 class="card-title">
+                  <a href="{% url 'create_group' %}">Add Group</a>
+                </h5>
+              </div>
+            </div>
           </div>
         </div>
       </div>
-    {% endfor %}
+    </div>
   </div>
 {% endblock %}

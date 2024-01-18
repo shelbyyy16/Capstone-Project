@@ -1,22 +1,36 @@
 {% extends 'base.html' %} 
 {% block content %}
-<h1 class="text-center text-light">Your Expenses</h1>
-<div class="row row-cols-1 row-cols-md-3 g-4">
-    {% for expense in expenses %}
-    <div class="col">
-      <div class="card text-center custom-card-color">
-        <div class="card-body ">
-    <h5 class="card-title text-light"> {{ expense.title }}</h5>
-    <h6 class="card-subtitle mb-2 text-body-secondary">{{ expense.group}}</h6>
-    <p class="card-text">Expense Type: {{ expense.type }}</p>
-    <p class="card-text">Expense Description: {{ expense.description}}</p>
-    <p class="card-text">Total Amount: ${{ expense.amount}}</p>
-    <p class="card-text">You Owe: ${{ expense.divided_amount }}</p>
-    <button  button type="submit" class="btn btn-primary" style="background-color: #172627;"><a href="{% url 'expense_update' expense_id=expense.id %}">Update</a></button>
-    <button  button type="submit" class="btn btn-primary" style="background-color: #172627;"><a href="{% url 'expense_delete' expense_id=expense.id %}" >Delete</a></button>
-</div>
-</div>
-</div>
-{% endfor %}
-</div>
+  <div class="container-fluid">
+    <div class="row">
+
+      <div class="col-md-3">
+        <h1 class="text-light">| Your Expenses</h1>
+      </div>
+
+      <div class="col-md-9">
+        <div class="row row-cols-1 row-cols-md-3 g-4 equal-height-cards">
+          {% for expense in expenses %}
+            <div class="col">
+              <div class="card text-center custom-card-color d-flex flex-column h-100">
+                <div class="card-body">
+                  <h5 class="card-title text-light">{{ expense.title }}</h5>
+                  <h6 class="card-subtitle mb-2 text-body-secondary">{{ expense.group }}</h6>
+                  <p class="card-text">Expense Type: {{ expense.type }}</p>
+                  <p class="card-text">Expense Description: {{ expense.description }}</p>
+                  <p class="card-text">Total Amount: ${{ expense.amount }}</p>
+                  <p class="card-text">You Owe: ${{ expense.divided_amount }}</p>
+                  <button type="submit" class="btn btn-primary" style="background-color: #172627;">
+                    <a href="{% url 'expense_update' expense_id=expense.id %}">Update</a>
+                  </button>
+                  <button type="submit" class="btn btn-primary" style="background-color: #172627;">
+                    <a href="{% url 'expense_delete' expense_id=expense.id %}">Delete</a>
+                  </button>
+                </div>
+              </div>
+            </div>
+          {% endfor %}
+        </div>
+      </div>
+    </div>
+  </div>
 {% endblock %}

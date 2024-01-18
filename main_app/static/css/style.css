@@ -23,3 +23,12 @@ a {
     color: white;
 
   }
+
+  .equal-height-cards {
+    display: flex;
+    flex-wrap: wrap;
+  }
+  .equal-height-cards > .col {
+    display: flex;
+    flex-direction: column;
+  }

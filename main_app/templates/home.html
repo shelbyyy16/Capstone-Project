@@ -7,11 +7,11 @@
         <div class="card-body">
             <h1 class="card-title">Welcome to SPL/T</h1>
     {% if user.is_authenticated %}
-    <button class="btn btn-primary" style="background-color: #61778d;"><a href="{% url 'groups_index' %}">View Your Groups</a></button>
-    <button class="btn btn-primary" style="background-color: #61778d;"><a href="{% url 'expenses_index' %}">View Your Expenses</a></button>
+    <button class="btn btn-primary" style="background-color: #172627;"><a href="{% url 'groups_index' %}">View Your Groups</a></button>
+    <button class="btn btn-primary" style="background-color: #172627;"><a href="{% url 'expenses_index' %}">View Your Expenses</a></button>
     {% else %}
-    <button><a href="{% url 'login' %}">Log In</a></button>
-    <button><a href="{% url 'signup' %}">Sign Up</a></button>
+    <button class="btn btn-primary" style="background-color: #172627;"><a href="{% url 'login' %}">Log In</a></button>
+    <button class="btn btn-primary" style="background-color: #172627;"><a href="{% url 'signup' %}">Sign Up</a></button>
     {% endif %}
 </div>
 </div>
