@@ -1,37 +1,44 @@
 {% extends 'base.html' %}
 {% block content %}
-<h2></h2>
-<div class="card custom-card-color" style="width: 18rem" >
-  <div class="card-body ">
-    <h2 class="card-title">{{ group.name }} Details</h2>
-    <h6 class="card-subtitle mb-2 text-body-secondary">Group Members</h6>
-    {% if group.members.all %}
-      <ul>
-        {% for member in group.members.all %}
-          <li>{{ member.username }}</li>
-        {% endfor %}
-      </ul>
-    {% else %}
-      <p>No members found for this group.</p>
-    {% endif %}
+  <div class="container-fluid">
+    <div class="row">
 
-    <h6 class="card-subtitle mb-2 text-body-secondary">Expenses</h6>
-    {% if expenses %}
-      <ul>
-        {% for expense in expenses %}
-          <h6 class="card-subtitle mb-2 text-body-secondary">{{ expense.title }}</h6>
-          <p class="card-text">Total: ${{ expense.amount }}</p>
-          <p class="card-text">You Owe: ${{ expense.divided_amount }}</p>
-        {% endfor %}
-      </ul>
-    {% else %}
-      <p>No expenses found for this group.</p>
-    {% endif %}
+      <div class="col-md-3">
+        <h2 class="text-light">| Members</h2>
+        {% if group.members.all %}
+          <ul>
+            {% for member in group.members.all %}
+              <li class="text-light">{{ member.username }}</li>
+            {% endfor %}
+          </ul>
+        {% else %}
+          <p>No members found for this group.</p>
+        {% endif %}
+      </div>
 
-    <h6 class="card-subtitle mb-2 text-body-secondary">Group Total: ${{ group_total }}</h6>
 
-    <h6 class="card-subtitle mb-2 text-body-secondary">Your Total: ${{ total_owed }}</h6>
-    <a href="{% url 'create_expense' %}" class="btn btn-primary" style="background-color: #61778d;"> Add Expense</a>
+      <div class="col-md-9">
+        <div class="card mb-3 custom-card-color">
+          <h2 class="custom-bg card-header text-light text-center">| {{ group.name }}</h2>
+          <div class="card-body bg-light">
+            {% if expenses %}
+              <ul>
+                {% for expense in expenses %}
+                  <h6 class="card-subtitle mb-2 text-body-secondary">{{ expense.title }}</h6>
+                  <p class="card-text">Total: ${{ expense.amount }}</p>
+                  <p class="card-text">You Owe: ${{ expense.divided_amount }}</p>
+                {% endfor %}
+              </ul>
+            {% else %}
+              <p>No expenses found for this group.</p>
+            {% endif %}
+
+            <h6 class="card-subtitle mb-2 text-body-secondary">Group Total: ${{ group_total }}</h6>
+            <h6 class="card-subtitle mb-2 text-body-secondary">Your Total: ${{ total_owed }}</h6>
+            <a href="{% url 'create_expense' %}" class="btn btn-primary" style="background-color: #61778d;"> Add Expense</a>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
-</div>
 {% endblock %}

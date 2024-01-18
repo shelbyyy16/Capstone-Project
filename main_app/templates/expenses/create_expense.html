@@ -1,13 +1,12 @@
 {% extends 'base.html' %}
 {% block content %}
 <div class="card w-75 mb-3 custom-card-color">
-    <div class="card-body">
-    <h2  class="card-title text-center">Add a New Expense</h2>
-
+    <h2  class="card-header text-center text-light">Add a New Expense</h2>
+    <div class="card-body bg-light">
     <form method="post" enctype="multipart/form-data">
         {% csrf_token %}
         {{ form.as_p }}
-        <button type="submit" class="btn btn-primary" style="background-color: #61778d;">Add Expense</button>
+        <button type="submit" class="btn btn-primary" style="background-color: #172627;">Add Expense</button>
 
     </form>
 </div>
