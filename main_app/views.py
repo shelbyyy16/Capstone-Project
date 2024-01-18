@@ -63,7 +63,6 @@ def signup(request):
             login(request, user)
             return redirect('home')
         else:
-            # Retrieve and display form errors
             error_message = 'Invalid sign up - try again'
             form_errors = form.errors
     else:
@@ -82,7 +81,14 @@ class GroupCreateView(LoginRequiredMixin, CreateView):
 
     def form_valid(self, form):
         form.instance.user = self.request.user
-        return super().form_valid(form)
+        response = super().form_valid(form)
+        self.object.members.add(self.request.user)
+        return response
+
+    def get_form_kwargs(self):
+        kwargs = super().get_form_kwargs()
+        kwargs['user'] = self.request.user
+        return kwargs
 
 class GroupUpdate(LoginRequiredMixin, UpdateView):
     model = Group

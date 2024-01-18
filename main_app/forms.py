@@ -1,11 +1,12 @@
 from django import forms
 from django.forms import ModelForm
-from django.contrib.auth.models import User  
+from django.contrib.auth.models import User
 from .models import Group, Expense
+
 
 class GroupForm(ModelForm):
     members = forms.ModelMultipleChoiceField(
-        queryset=User.objects.all(),
+        queryset=User.objects.none(),  # Set an empty initial queryset
         widget=forms.CheckboxSelectMultiple,
     )
 
@@ -19,8 +20,13 @@ class GroupForm(ModelForm):
         }
 
     def __init__(self, *args, **kwargs):
+        user = kwargs.pop('user', None)
         super().__init__(*args, **kwargs)
-        self.fields['members'].label = 'Group Members'
+
+        if user:
+            self.fields['members'].queryset = User.objects.exclude(id=user.id)
+            self.fields['members'].label = 'Group Members'
+
 
 class ExpenseForm(ModelForm):
     class Meta:
@@ -38,7 +44,8 @@ class ExpenseForm(ModelForm):
     def save(self, commit=True):
         expense = super().save(commit=False)
         members_count = expense.group.members.count()
-        expense.divided_amount = expense.amount / members_count if members_count > 0 else 0
+        expense.divided_amount = expense.amount / \
+            members_count if members_count > 0 else 0
         if commit:
             expense.save()
         return expense
