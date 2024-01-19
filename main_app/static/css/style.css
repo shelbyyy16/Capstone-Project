@@ -32,4 +32,6 @@ a {
     display: flex;
     flex-direction: column;
   }
-
+.custom-header-height {
+  height: 2.8rem;
+}
