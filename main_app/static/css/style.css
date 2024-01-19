@@ -3,6 +3,27 @@ body {
     min-height: 100vh;
     flex-direction: column;
     background-color: #0e2528;
+    color: #172627;
+}
+
+h1 {
+  font-family: 'DM Serif Display', serif;
+}
+
+h2,h3,h4{
+  font-family: 'DM Serif Display', serif;
+  color: #172627;
+}
+
+.dropdown {
+  font-family: 'DM Serif Display', serif;
+  font-size: medium;
+  color: #172627;
+
+}
+.logo {
+  font-family: 'DM Serif Display', serif;
+  font-size: x-large;
 }
 
 .custom-card-color {
@@ -20,8 +41,7 @@ body {
 
 a {
     text-decoration: none;
-    color: white;
-
+    color: #172627;
   }
 
 .equal-height-cards {
@@ -33,5 +53,5 @@ a {
     flex-direction: column;
   }
 .custom-header-height {
-  height: 2.8rem;
+  height: 3.3rem;
 }
