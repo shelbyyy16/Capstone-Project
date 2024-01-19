@@ -19,21 +19,21 @@
       <nav class="navbar navbar-expand-lg custom-nav-color">
         <div class="container-fluid custom-nav-color">
           <ul>
-            <div><a href="/">&nbsp;&nbsp;SPL/T</a></div>
+            <div><a href="/" style="color: #172627">&nbsp;&nbsp;SPL/T</a></div>
           </ul>
           {% if user.is_authenticated %}
           <div class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
               Hello, {{ user.username }}
             </a>
-          <ul class="dropdown-menu custom-card-color">
-            <li><a href="{% url 'groups_index' %}">Your Groups</a></li>
-            <li><a href="{% url 'create_group' %}">Create Group</a></li>
-            <li><a href="{% url 'expenses_index' %}">Your Expenses</a></li>
-            <li><a href="{% url 'create_expense' %}">Add an Expense</a></li>
+          <ul class="dropdown-menu custom-card-color" >
+            <li ><a href="{% url 'groups_index' %}" style="color: #172627">Your Groups</a></li>
+            <li ><a href="{% url 'create_group' %}" style="color: #172627">Create Group</a></li>
+            <li><a href="{% url 'expenses_index' %}" style="color: #172627">Your Expenses</a></li>
+            <li><a href="{% url 'create_expense' %}" style="color: #172627">Add an Expense</a></li>
             <li><form action="{% url 'logout' %}" method="POST">
               {% csrf_token%}
-              <button type="submit" class="btn">Log Out</button>
+              <button type="submit" class="btn" style="color: #172627">Log Out</button>
             </form>
             </li>
           </ul>

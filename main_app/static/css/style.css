@@ -2,20 +2,20 @@ body {
     display: flex;
     min-height: 100vh;
     flex-direction: column;
-    background-color: #172627;
+    background-color: #0e2528;
 }
 
 .custom-card-color {
-    background-color: #20cd8d;
+    background-color: #77c3c9;
   }
 
 .custom-nav-color {
-    background-color: #20cd8d;
+    background-color: #77c3c9;
     
 }
 
 .custom-bg {
-  background-color: #24cb8b;
+  background-color: #77c3c9;
 }
 
 a {
@@ -24,11 +24,17 @@ a {
 
   }
 
-  .equal-height-cards {
+.equal-height-cards {
     display: flex;
     flex-wrap: wrap;
   }
-  .equal-height-cards > .col {
+.equal-height-cards > .col {
     display: flex;
     flex-direction: column;
   }
+
+main {
+  display: flex;
+  justify-content: center; 
+  align-items: center; 
+}
