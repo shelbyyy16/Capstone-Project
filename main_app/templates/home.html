@@ -5,23 +5,23 @@
   <div class="card w-75 m-3 custom-card-color">
     <div class="card-body">
         <br>
-      <h1 class="card-title">Welcome to SPL/T</h1>
+      <h1 class="card-title"><strong>Welcome to SPL/T</strong> </h1>
       <br>
       <br>
       <div class="d-flex justify-content-center">
         {% if user.is_authenticated %}
-        <button class="btn btn-primary mx-2" style="background-color: #172627">
-          <a href="{% url 'groups_index' %}">View Your Groups</a>
+        <button class="btn mx-2" style="background-color: #172627">
+          <a href="{% url 'groups_index' %}" class="text-light" >View Your Groups</a>
         </button>
-        <button class="btn btn-primary mx-2" style="background-color: #172627">
-          <a href="{% url 'expenses_index' %}">View Your Expenses</a>
+        <button class="btn mx-2" style="background-color: #172627">
+          <a href="{% url 'expenses_index' %}" class="text-light">View Your Expenses</a>
         </button>
         {% else %}
-        <button class="btn btn-primary mx-2" style="background-color: #172627">
-          <a href="{% url 'login' %}">Log In</a>
+        <button class="btn mx-2" style="background-color: #172627">
+          <a href="{% url 'login' %}" class="text-light">Log In</a>
         </button>
-        <button class="btn btn-primary mx-2" style="background-color: #172627">
-          <a href="{% url 'signup' %}">Sign Up</a>
+        <button class="btn mx-2" style="background-color: #172627">
+          <a href="{% url 'signup' %}" class="text-light">Sign Up</a>
         </button>
    
         {% endif %}

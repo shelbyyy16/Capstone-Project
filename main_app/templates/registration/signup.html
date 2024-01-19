@@ -1,8 +1,8 @@
 {% extends 'base.html' %} {% block content %}
-<div class="card w-75 mb-3">
-  <div class="card-body">
-    <h1 class="card-title text-center">Sign Up</h1>
-
+<div class="d-flex justify-content-center align-items-center vh-100"> 
+  <div class="card w-70 mb-3 custom-card-color">
+    <h1 class="card-header text-center">Sign Up</h1>
+    <div class="card-body bg-light d-flex flex-column align-items-center">
     <p class="red-text">{{ error_message }}</p>
 
     <form method="POST" action="{% url 'signup' %}">
@@ -20,8 +20,10 @@
           </ul>
         </div>
       {% endif %}
-      <button type="submit" class="btn btn-primary">Sign Up</button>
+      <br>
+      <button type="submit" class="btn" style="background-color: #0e2528; color: #ffffff; margin-left: auto; margin-right: auto; display: block;">Sign Up</button>
     </form>
   </div>
+</div>
 </div>
 {% endblock %}

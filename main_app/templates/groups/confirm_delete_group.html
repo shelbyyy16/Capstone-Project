@@ -1,14 +1,16 @@
 {% extends 'base.html' %}
 {% block content %}
-<div class="card w-75 mb-3 custom-card-color">
-    <div class="card-body">
-    <h2>Confirm Delete</h2>
-    <p>Are you sure you want to delete the group "{{ group.name }}"?</p>
+<div class="d-flex justify-content-center align-items-center vh-100"> 
+    <div class="card w-70 mb-3 custom-card-color">
+    <h2 class="card-header text-center">Confirm Delete</h2>
+    <div class="card-body bg-light d-flex flex-column align-items-center">
+    <p>Are you sure you want to delete the group <strong>"{{ group.name }}"</strong>?</p>
     <form method="post" action="">
         {% csrf_token %}
-        <button type="submit" class="btn btn-primary" style="background-color: #61778d;">Yes, delete</button>
+        <button type="submit" class="btn" style="background-color: #0e2528; color: #ffffff;">Yes, delete</button>
         <a href="{% url 'groups_index' %}">Cancel</a>
     </form>
+</div>
 </div>
 </div>
 {% endblock %}

@@ -4,6 +4,7 @@ body {
     flex-direction: column;
     background-color: #0e2528;
     color: #172627;
+    font-family: 'Merriweather', serif;
 }
 
 h1 {

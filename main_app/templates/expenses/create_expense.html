@@ -1,15 +1,15 @@
 {% extends 'base.html' %}
 {% block content %}
 <div class="d-flex justify-content-center align-items-center vh-100"> 
-    <div class="card w-75 m-3 custom-card-color">
-        <h2 class="card-header text-center text-light">Add a New Expense</h2>
-    <div class="card-body bg-light">
-    <form method="post" enctype="multipart/form-data">
-        {% csrf_token %}
-        {{ form.as_p }}
-        <button type="submit" class="btn" style="background-color: #0e2528; color: #ffffff;">Add Expense</button>
-
-    </form>
-</div>
+    <div class="card w-70 m-3 custom-card-color">
+        <h2 class="card-header text-center">Add a New Expense</h2>
+        <div class="card-body bg-light d-flex flex-column align-items-center">
+            <form method="post" enctype="multipart/form-data">
+                {% csrf_token %}
+                {{ form.as_p }}
+                <button type="submit" class="btn" style="background-color: #0e2528; color: #ffffff; margin-left: auto; margin-right: auto; display: block;">Add Expense</button>
+            </form>
+        </div>
+    </div>
 </div>
 {% endblock %}
