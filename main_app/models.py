@@ -18,6 +18,8 @@ class ExpenseType(Enum):
     BILL = 'Bill'
     TRANSPORTATION = 'Transportation'
     ENTERTAINMENT = 'Entertainment'
+    PERSONAL = 'Personal'
+    OTHER = 'Other'
 
 class Expense(models.Model):
     group = models.ForeignKey(Group, on_delete=models.CASCADE)
