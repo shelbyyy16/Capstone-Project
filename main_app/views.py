@@ -7,7 +7,9 @@ from django.contrib.auth import login
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.mixins import LoginRequiredMixin
+from django.contrib.auth.models import User
 from django.db.models import Sum
+
 
 
 
@@ -42,6 +44,8 @@ def group_details(request, group_id):
         'total_owed': total_owed,
     })
 
+
+
 @login_required
 def expenses_index(request):
     expenses = Expense.objects.filter(group__user=request.user)
@@ -72,7 +76,6 @@ def signup(request):
     context = {'form': form, 'error_message': error_message, 'form_errors': form_errors}
     return render(request, 'registration/signup.html', context)
 
-
 class GroupCreateView(LoginRequiredMixin, CreateView):
     model = Group
     form_class = GroupForm
@@ -81,15 +84,21 @@ class GroupCreateView(LoginRequiredMixin, CreateView):
 
     def form_valid(self, form):
         form.instance.user = self.request.user
+        members_str = form.cleaned_data['members']
+        members_list = [username.strip() for username in members_str.split(',') if username.strip()]
+        members_queryset = User.objects.filter(username__in=members_list)
+   
         response = super().form_valid(form)
-        self.object.members.add(self.request.user)
+        
+        form.instance.members.set(members_queryset)
+
         return response
 
     def get_form_kwargs(self):
         kwargs = super().get_form_kwargs()
         kwargs['user'] = self.request.user
         return kwargs
-
+    
 class GroupUpdate(LoginRequiredMixin, UpdateView):
     model = Group
     fields = ['name', 'description', 'members']

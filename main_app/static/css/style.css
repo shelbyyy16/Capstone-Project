@@ -56,7 +56,3 @@ a {
 .custom-header-height {
   height: 3.3rem;
 }
-
-.btn, button.btn {
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-}

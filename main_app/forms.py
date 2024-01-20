@@ -3,16 +3,15 @@ from django.forms import ModelForm
 from django.contrib.auth.models import User
 from .models import Group, Expense
 
-
 class GroupForm(ModelForm):
-    members = forms.ModelMultipleChoiceField(
-        queryset=User.objects.none(),  # Set an empty initial queryset
-        widget=forms.CheckboxSelectMultiple,
+    members = forms.CharField(
+        max_length=100, required=False,
+        widget=forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Add members (comma-separated)'}),
     )
 
     class Meta:
         model = Group
-        fields = ['name', 'description', 'members']
+        fields = ['name', 'description']
 
         widgets = {
             'name': forms.TextInput(attrs={'class': 'form-control'}),
@@ -22,10 +21,11 @@ class GroupForm(ModelForm):
     def __init__(self, *args, **kwargs):
         user = kwargs.pop('user', None)
         super().__init__(*args, **kwargs)
+        self.fields['members'].label = 'Group Members'
+        self.user = user
 
-        if user:
-            self.fields['members'].queryset = User.objects.exclude(id=user.id)
-            self.fields['members'].label = 'Group Members'
+    def filter_members(self, query):
+        return User.objects.exclude(id=self.user.id).filter(username__icontains=query)
 
 
 class ExpenseForm(ModelForm):
@@ -49,3 +49,4 @@ class ExpenseForm(ModelForm):
         if commit:
             expense.save()
         return expense
+
