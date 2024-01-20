@@ -1,11 +1,21 @@
 ## SPL/T
 
-A django and python powered app to take the confusion and fuss out of splitting expenses. Create Groups with your friends and divide Airfare and Lodging expenses for a trip or make sure your Rent and Utilies are split evenly among housemates. 
+Effortless Expense Splitting for Seamless Friendships – Share the Load, Not the Stress!
+
+A Django and Python powered application to take the confusion and fuss out of splitting expenses. Create Groups with your friends, add expenses and divide evenly; keeping the process quick, easy and fair.
 
 
-1. Link to your deployed application
+![Launch SPL/T here](https://split-expense-deploy-b0bffae153fd.herokuapp.com)
+
 2. Screenshots of core functionality, including descriptions or relevant user stories
-3. A summary of technologies / APIS used plus links to the relevant resources (express, mongoose, Auth0, etc) documentation
+
+## Technologies Used:
+- Python
+- Django
+- PostgreSQL
+
+
 4. Instructions for how a person might spin up a copy of your app locally
 5. Summary of current user flow / feature list
-6. A list of your future features / icebox items
+## Future Features COming:
+- The ability to 
