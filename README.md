@@ -2,7 +2,7 @@
 
 Effortless Expense Splitting for Seamless Friendships – Share the Load, Not the Stress!
 
-A Django and Python powered application to take the confusion and fuss out of splitting expenses. Create Groups with your friends, add expenses and divide evenly; keeping the process quick, easy and fair.
+Welcome to SPL/T, a Django and Python powered application designed to simplify the process of splitting expenses among friends. Create groups, add expenses, and effortlessly divide costs within your circles. Whether it's travel expenses, special events, or home-related costs, SPL/T ensures fairness and transparency. Say goodbye to the confusion and stress of splitting bills – Share the Load, Not the Stress with SPL/T.
 
 
 [Launch SPL/T here](https://split-expense-deploy-b0bffae153fd.herokuapp.com)
