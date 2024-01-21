@@ -42,6 +42,10 @@ class ExpenseForm(ModelForm):
             'amount': forms.NumberInput(attrs={'class': 'form-control', 'step': '0.01'}), 
         }
 
+    def __init__(self, user, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        self.fields['group'].queryset = user.group_set.all()
+
     def save(self, commit=True):
         expense = super().save(commit=False)
         members_count = expense.group.members.count()

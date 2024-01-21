@@ -128,10 +128,14 @@ class ExpenseCreateView(LoginRequiredMixin, CreateView):
         form.instance.user = self.request.user
         return super().form_valid(form)
 
+    def get_form_kwargs(self):
+        kwargs = super().get_form_kwargs()
+        kwargs['user'] = self.request.user
+        return kwargs
+
     def get_form(self, form_class=None):
         form = super().get_form(form_class)
-        form.user = self.request.user 
-        form.fields['group'].queryset = form.fields['group'].queryset.filter(members=self.request.user)
+        form.fields['group'].queryset = self.request.user.group_set.all()
         return form
 
 class ExpenseUpdate(LoginRequiredMixin, UpdateView):
