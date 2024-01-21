@@ -30,8 +30,8 @@ class Expense(models.Model):
         default=ExpenseType.LODGING.value
     )
     description = models.TextField(max_length=250, default='N/A')
-    amount = models.PositiveIntegerField()
-    divided_amount = models.PositiveIntegerField(default=0)
+    amount = models.DecimalField(max_digits=10, decimal_places=2) 
+    divided_amount = models.DecimalField(max_digits=10, decimal_places=2, default=0)
 
     def __str__(self):
         return f"{self.group.name} - Expense #{self.id}"

@@ -38,15 +38,13 @@ class ExpenseForm(ModelForm):
             'title': forms.TextInput(attrs={'class': 'form-control'}),
             'type': forms.Select(attrs={'class': 'form-select'}),
             'description': forms.Textarea(attrs={'class': 'form-control'}),
-            'amount': forms.NumberInput(attrs={'class': 'form-control'}),
+            'amount': forms.NumberInput(attrs={'class': 'form-control', 'step': '0.01'}), 
         }
 
     def save(self, commit=True):
         expense = super().save(commit=False)
         members_count = expense.group.members.count()
-        expense.divided_amount = expense.amount / \
-            members_count if members_count > 0 else 0
+        expense.divided_amount = Decimal(expense.amount) / members_count if members_count > 0 else Decimal(0)
         if commit:
             expense.save()
         return expense
-
