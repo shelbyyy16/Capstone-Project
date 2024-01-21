@@ -18,7 +18,9 @@
                   <p class="card-text">Expense Type: {{ expense.type }}</p>
                   <p class="card-text">Expense Description: {{ expense.description }}</p>
                   <p class="card-text">Total Amount: ${{ expense.amount }}</p>
-                  <p class="{% if data.total_owed != 0 %}text-danger{% endif %}"><strong>You Owe: ${{ expense.divided_amount }}</strong></p>
+                  <p class="{% if data.total_owed != 0 %}text-danger{% endif %}">
+                    <strong>You Owe: ${{ expense.divided_amount|floatformat:2 }}</strong>
+                </p>
                   <button type="submit" class="btn" style="background-color: #0e2528;">
                     <a href="{% url 'expense_update' expense_id=expense.id %}" class="text-light">Update</a>
                   </button>
