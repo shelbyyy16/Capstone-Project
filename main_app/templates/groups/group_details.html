@@ -4,11 +4,11 @@
     <div class="row">
 
       <div class="col-md-3">
-        <h2 class="text-light">| Members</h2>
+        <h1 class="text-light px-4">| Members</h1>
         {% if group.members.all %}
           <ul>
             {% for member in group.members.all %}
-              <li class="text-light">{{ member.username }}</li>
+              <h4 class="text-light" style="margin-left: 2rem; padding: .5rem">{{ member.username }}</h4>
             {% endfor %}
           </ul>
         {% else %}
@@ -18,13 +18,13 @@
 
       <div class="col-md-9">
         <div class="card w-75 m-3 custom-card-color">
-          <h2 class="custom-bg card-header text-light text-center">| {{ group.name }}</h2>
+          <h2 class="custom-bg card-header text-center" style="padding: 1rem;">| {{ group.name }}</h2>
           <div class="card-body bg-light">
             {% if expenses %}
               <ul>
                 {% for expense in expenses %}
-                  <h6 class="card-subtitle mb-2 text-body-secondary">{{ expense.title }}</h6>
-                  <div class="d-flex justify-content-between">
+                  <h6 class="card-subtitle mb-2 text-body-secondary" style="padding: 1rem;">{{ expense.title }}</h6>
+                  <div class="d-flex justify-content-between" style="padding-left: 10rem; padding-right: 12rem;">
                     <p class="card-text">Total: ${{ expense.amount }}</p>
                     <p class="card-text">You Owe: ${{ expense.divided_amount }}</p>
                   </div>
@@ -34,12 +34,14 @@
               <p>No expenses found for this group.</p>
             {% endif %}
 <hr>
-            <div class="d-flex justify-content-between">
+            <div class="d-flex justify-content-between" style="padding-left: 10rem; padding-right: 12rem;">
               <h6 class="card-subtitle mb-2 text-body-secondary">Group Total: ${{ group_total }}</h6>
-              <h6 class="card-subtitle mb-2 text-body-secondary">Your Total: ${{ total_owed }}</h6>
+              <h6 class="card-subtitle mb-2 text-body-secondary">Your Total:<strong>${{ total_owed }}</strong></h6>
             </div>
             
-            <a href="{% url 'create_expense' %}" class="btn btn-primary" style="background-color: #172627;"> Add Expense</a>
+            <div class="text-center">
+              <a href="{% url 'create_expense' %}" class="btn btn-primary" style="background-color: #172627; margin-top: 3rem; margin-bottom: 1rem; border: #172627;">Add Expense</a>
+            </div>
             
           </div>
         </div>

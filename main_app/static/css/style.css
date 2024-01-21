@@ -55,3 +55,7 @@ a {
 .custom-header-height {
   height: 3.3rem;
 }
+
+.border-white {
+  border: 1rem solid white;
+}

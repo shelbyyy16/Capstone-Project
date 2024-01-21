@@ -14,7 +14,7 @@
                   <h3 class="card-header text-center custom-header-height">
                     <a href="{% url 'group_details' group_id=data.group.id %}">{{ data.group.name }}</a>
                   </h3>
-                  <div class="card-body bg-light">
+                  <div class="card-body bg-light" style="height: 150px;"> {# Adjust the height as needed #}
                   <h6 class="card-subtitle mb-2 text-body-secondary">
                     {{ data.group.description }}
                   </h6>
@@ -29,7 +29,8 @@
           <div class="col">
             <div class="card text-center custom-card-color d-flex flex-column h-100">
               <h3 class="card-header text-center custom-header-height">Add Group <span class="badge" style="background-color: #0e2528;"><a href="{% url 'create_group' %}" class="text-light">+</a></span></h3>
-                <div class="card-body bg-light">
+                <div class="card-body bg-light" style="height: 150px;"> {# Adjust the height as needed #}
+
               </div>
             </div>
           </div>
