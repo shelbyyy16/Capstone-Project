@@ -16,9 +16,9 @@ from django.db.models import Sum, Q
 def home(request):
     return render(request, 'home.html')
 
+
 @login_required
 def groups_index(request):
-
     groups = Group.objects.filter(Q(user=request.user) | Q(members=request.user)).distinct()
 
     group_data = []
@@ -28,6 +28,7 @@ def groups_index(request):
         group_data.append({'group': group, 'total_owed': total_owed})
 
     return render(request, 'groups/groups_index.html', {'group_data': group_data})
+
 
 
 @login_required
@@ -83,30 +84,32 @@ class GroupCreateView(LoginRequiredMixin, CreateView):
     template_name = 'groups/create_group.html'
     success_url = reverse_lazy('groups_index')
 
-    #This is a method that gets called when the form submitted by the user is valid.
+    # This is a method that gets called when the form submitted by the user is valid.
     def form_valid(self, form):
-
-    # It assigns the user who is currently logged in (self.request.user) to the user field of the form instance.
+        # Assign the user who is currently logged in (self.request.user) to the user field of the form instance.
         form.instance.user = self.request.user
 
-    #Retrieves the cleaned data from the 'members' field of the form.(comma-separated string of usernames)   
+        # Retrieve the cleaned data from the 'members' field of the form (comma-separated string of usernames)   
         members_str = form.cleaned_data['members']
 
-    #Splits the string of usernames into a list, removing leading and trailing whitespaces from each username.
+        # Splits the string of usernames into a list, removing leading and trailing whitespaces from each username.
         members_list = [username.strip() for username in members_str.split(',') if username.strip()]
 
-    #Fetches a queryset of User objects whose usernames match those in the members_list.    
+        # Fetches a queryset of User objects whose usernames match those in the members_list.    
         members_queryset = User.objects.filter(username__in=members_list)
 
-    # Save the form instance before setting many-to-many relationship
+        # Add the logged-in user to the members_queryset
+        members_queryset |= User.objects.filter(pk=self.request.user.pk)
+
+        # Save the form instance before setting many-to-many relationship
         response = super().form_valid(form)
 
-    #After saving the form instance, it sets the many-to-many relationship for the 'members' field of the Group model.
+        # After saving the form instance, set the many-to-many relationship for the 'members' field of the Group model.
         form.instance.members.set(members_queryset)
    
         return response
 
-    #method is used to pass additional keyword arguments to the form(This is used to identify the current logged in user)
+    # Method is used to pass additional keyword arguments to the form (This is used to identify the current logged-in user)
     def get_form_kwargs(self):
         kwargs = super().get_form_kwargs()
         kwargs['user'] = self.request.user
