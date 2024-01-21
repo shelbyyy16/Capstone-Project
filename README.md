@@ -5,16 +5,16 @@ Effortless Expense Splitting for Seamless Friendships – Share the Load, Not th
 A Django and Python powered application to take the confusion and fuss out of splitting expenses. Create Groups with your friends, add expenses and divide evenly; keeping the process quick, easy and fair.
 
 
-![Launch SPL/T here](https://split-expense-deploy-b0bffae153fd.herokuapp.com)
+[Launch SPL/T here](https://split-expense-deploy-b0bffae153fd.herokuapp.com)
 
-![Create Group](static/images/create_group.png)
-*Caption: Create Groups and add as many Users as you like.*
+![Create Group](https://split-expense-deploy-b0bffae153fd.herokuapp.com/static/images/create_group.png)
+*Create Groups and add as many Users as you like.*
 
-![Your Expenses Page](static/images/Your_Expenses_Page.png)
-*Caption: Navigate to 'Your Expenses' page to view expenses that only pertain to you.*
+![Your Expenses Page](https://split-expense-deploy-b0bffae153fd.herokuapp.com/static/images/Your_Expenses_Page.png)
+*Navigate to 'Your Expenses' page to view expenses that only pertain to you.*
 
-![Group Details](static/images/group_details.png)
-*Caption: See a breakdown of expenses for the whole group and the amount that you owe.*
+![Group Details](https://split-expense-deploy-b0bffae153fd.herokuapp.com/static/images/group_details.png)
+*See a breakdown of expenses for the whole group and the amount that you owe.*
 
 
 ## Technologies Used:
