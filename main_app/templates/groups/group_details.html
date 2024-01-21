@@ -22,7 +22,7 @@
                     {% if expenses %}
                         <ul>
                             {% for expense in expenses %}
-                            <h6 class="card-subtitle mb-2 text-body-secondary" style="padding: 1rem;">{{ expense.title }}</h6>
+                            <h6 class="card-subtitle mb-2 text-body-secondary" style="padding: 1rem;"><strong>{{ expense.title }}</strong></h6>
                             <div class="d-flex justify-content-between" style="padding-left: 10rem; padding-right: 12rem;">
                                 <p class="card-text">Total: ${{ expense.amount }}</p>
                                 <p class="card-text">You Owe: ${{ expense.divided_amount|floatformat:2 }}</p>

@@ -5,33 +5,36 @@
     <div class="row">
       <div class="col-md-6 col-12 text-center" style="padding: 0; border: 0;">
         <div class="card w-100 h-100" style="border-radius: 0; border: 0;">
-          <div class="card-body" style =" background-color: #172627; padding: 3.5rem;">
+          <div class="card-body" style =" background-color: #172627; padding: 4rem;">
+            <br>
             <br>
             <h1 class="card-title text-light"><strong>Welcome to SPL/T</strong></h1>
             <br>
             <br>
-            <h5 class="text-light">Effortless Expense Splitting for Seamless Friendships – Share the Load, Not the Stress</h5>
+            <h5 class="text-light ">Effortless Expense Splitting for Seamless Friendships – Share the Load, Not the Stress</h5>
             <br>
             <br>
-            <p class="text-light">A Django and Python powered application to take the confusion and fuss out of splitting expenses. Create Groups with your friends, add expenses and divide evenly; keeping the process quick, easy and fair.</p>
+            <p class="text-light "style ="padding-left: 4.5rem; padding-right: 4.5rem;">A Django and Python powered application to take the confusion and fuss out of splitting expenses. Create Groups with your friends, add expenses and divide evenly; keeping the process quick, easy and fair.</p>
+            <br>
+            <br>
             <br>
             <br>
             <br>
             <br>
             <div class="d-flex justify-content-center">
               {% if user.is_authenticated %}
-                <button class="btn mx-2" style="background-color: #77c3c9">
-                  <a href="{% url 'groups_index' %}" class="text-light">View Your Groups</a>
+                <button class="btn mx-2 " style="background-color: #77c3c9">
+                  <a href="{% url 'groups_index' %}" style="padding: 1rem;" >View Your Groups</a>
                 </button>
                 <button class="btn mx-2" style="background-color: #77c3c9">
-                  <a href="{% url 'expenses_index' %}" >View Your Expenses</a>
+                  <a href="{% url 'expenses_index' %}"" style="padding: 1rem;" >View Your Expenses</a>
                 </button>
               {% else %}
                 <button class="btn mx-2" style="background-color: #77c3c9">
-                  <a href="{% url 'login' %}" class="text-light">Log In</a>
+                  <a href="{% url 'login' %}" >Log In</a>
                 </button>
                 <button class="btn mx-2" style="background-color: #77c3c9">
-                  <a href="{% url 'signup' %}" class="text-light">Sign Up</a>
+                  <a href="{% url 'signup' %}" >Sign Up</a>
                 </button>
               {% endif %}
             </div>
@@ -41,86 +44,98 @@
       </div>
       <div class="col-md-6 col-12" style="padding: 0;">
         <div id="carouselExampleCaptions" class="carousel slide carousel-dark w-100 h-100">
-          <div class="carousel-inner" style="border: 0;">
-            <div class="carousel-item active">
-              <div class="card" style="border:0">
-                <img src="{% static 'images/create_group.png' %}" class="d-block w-100" alt="..." >
-                <div class="card-header custom-card-color text-center">
-                    <h5>Travel Expenses</h5>
-                    <h6>Planning a Trip? Throwing a surprise party? Or maybe you just want to track your household spending; you can create a group for that! Add as many users as you like, and divide bills evenly.</h6>
+            <div class="carousel-inner" style="border: 0;">
+                <div class="carousel-item active">
+                    <div class="card"  style="border-radius: 0; border: 0;">
+                        <div style="border: 2rem solid white; border-radius: 0; overflow: hidden;">
+                            <img src="{% static 'images/create_group.png' %}" class="d-block w-100" alt="...">
+                        </div>
+                        <div class="card-header custom-card-color text-center">
+                            <h5>Create Groups</h5>
+                            <h6>Planning a Trip? Hosting an Event? You can create a group for that! Add as many users as you like, and divide bills evenly.</h6>
+                        </div>
+                    </div>
                 </div>
-              </div>
-            </div>
-            <div class="carousel-item">
-              <div class="card" style="border: 0;">
-                <img src="{% static 'images/Your_Expenses_Page.png' %}" class="d-block w-100" alt="...">
-                <div class="card-header custom-card-color text-center">
-                    <h5>Keep track of Your Expenses</h5>
-                    <h6>Navigate to 'Your Expenses' page to view expenses that only pertain to you.</h6>
+                <div class="carousel-item">
+                  <div class="card"  style="border-radius: 0; border: 0;">
+                        <div style="border: 2rem solid white; border-radius: 0; overflow: hidden;">
+                            <img src="{% static 'images/Your_Expenses_Page.png' %}" class="d-block w-100" alt="...">
+                        </div>
+                        <div class="card-header custom-card-color text-center">
+                            <h5>Keep track of Your Expenses</h5>
+                            <h6>Navigate to 'Your Expenses' page to view expenses that only pertain to you.</h6>
+                        </div>
+                    </div>
                 </div>
-              </div>
+                <div class="carousel-item">
+                  <div class="card"  style="border-radius: 0; border: 0;">
+                        <div style="border: 2rem solid white; border-radius: 0; overflow: hidden;">
+                            <img src="{% static 'images/group_details.png' %}" class="d-block w-100" alt="...">
+                        </div>
+                        <div class="card-header custom-card-color text-center">
+                            <h5>View Group Details</h5>
+                            <h6>From 'Your Groups' page you can see a breakdown of expenses for the whole group, and see the amount that you owe.</h6>   
+                        </div>
+                    </div>
+                </div>
             </div>
-            <div class="carousel-item">
-              <div class="card" style="border: 0;">
-                <img src="{% static 'images/Party.png' %}" class="d-block w-100" alt="...">
-                <div class="card-header custom-card-color text-center">
-                  <h5>View Group Details</h5>
-                  <h6>From 'Your Groups' page you can see a breakdown of expenses for the whole group, and see the amount that you owe.</h6>   
-              </div>
-            </div>
-          </div>
-          <button class="carousel-control-prev " type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="prev">
-            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-            <span class="visually-hidden">Previous</span>
-          </button>
-          <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="next">
-            <span class="carousel-control-next-icon" aria-hidden="true"></span>
-            <span class="visually-hidden">Next</span>
-          </button>
+            <button class="carousel-control-prev " type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Previous</span>
+            </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="next" style="padding: 0;">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Next</span>
+            </button>
         </div>
-      </div>
+    </div>
     </div>
   </div>
-
-  <div class="card-group" style="height: 25vh;">
+  <div class="card-group" style="height: 22vh;">
     <div class="card mb-3" style="border-radius: 0; padding: 1rem;">
-      <div class="row g-0">
-        <div class="col-md-4 custom-col" style="padding: 1rem;">
-          <img src="{% static 'images/Travelers.png' %}" class="d-block w-100 border-white" alt="...">
+        <div class="row g-0">
+            <div class="col-md-4 custom-col">
+                <div class="d-flex align-items-center justify-content-center" style="height: 100%;">
+                    <img src="{% static 'images/Travelers.png' %}" class="d-block w-100 border-white" alt="...">
+                </div>
+            </div>
+            <div class="col-md-8">
+                <div class="card-body">
+                    <h5 class="card-title" style="margin-top: 8px;">Travel Expenses</h5>
+                    <p class="card-text">Split Airfare, Lodging and other expenses seamlessly within your travel group</p>
+                </div>
+            </div>
         </div>
-        <div class="col-md-8">
-          <div class="card-body">
-            <h5 class="card-title">Travel Expenses</h5>
-            <p class="card-text">Split Airfare, Lodging and other expenses seamlessly within your travel group</p>
-          </div>
-        </div>
-      </div>
     </div>
     <div class="card mb-3" style="border-radius: 0; padding: 1rem;">
-      <div class="row g-0">
-        <div class="col-md-4 custom-col" style="padding: 1rem;">
-          <img src="{% static 'images/Housemates.png' %}" class="d-block w-100 border-white" alt="...">
+        <div class="row g-0">
+            <div class="col-md-4 custom-col">
+                <div class="d-flex align-items-center justify-content-center" style="height: 100%;">
+                    <img src="{% static 'images/Party.png' %}" class="d-block w-100 border-white" alt="...">
+                </div>
+            </div>
+            <div class="col-md-8">
+                <div class="card-body">
+                    <h5 class="card-title" style="margin-top: 8px;">Special Events</h5>
+                    <p class="card-text">Divide costs like Venues and Entertainment when hosting special events.</p>
+                </div>
+            </div>
         </div>
-        <div class="col-md-8">
-          <div class="card-body" style="padding-left: 1rem; padding-right: 1rem">
-            <h5 class="card-title">Home Expenses</h5>
-            <p class="card-text">Easily keep track of Utilities, Home Payments and Groceries among housemates</p>
-          </div>
-        </div>
-      </div>
     </div>
-    <div class="card mb-3" style="border-radius: 0; padding: 1rem;">
-      <div class="row g-0">
-        <div class="col-md-4 custom-col" style="padding: 1rem;">
-          <img src="{% static 'images/Party.png' %}" class="d-block w-100 border-white" alt="...">
+        <div class="card mb-3" style="border-radius: 0; padding: 1rem;">
+        <div class="row g-0">
+            <div class="col-md-4 custom-col">
+                <div class="d-flex align-items-center justify-content-center" style="height: 100%;">
+                    <img src="{% static 'images/Housemates.png' %}" class="d-block w-100 border-white" alt="...">
+                </div>
+            </div>
+            <div class="col-md-8">
+                <div class="card-body" style="padding-left: 1rem; padding-right: 1rem">
+                    <h5 class="card-title" style="margin-top: 8px;">Home Expenses</h5>
+                    <p class="card-text">Easily keep track of Utilities, Home Payments and Groceries among housemates</p>
+                </div>
+            </div>
         </div>
-        <div class="col-md-8">
-          <div class="card-body">
-            <h5 class="card-title">Special Events</h5>
-            <p class="card-text">Divide costs like Venues and Entertainment when hosting special events.</p>
-          </div>
-        </div>
-      </div>
     </div>
-  </div>
+</div>
   {% endblock %}
